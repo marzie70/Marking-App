@@ -1,0 +1,14 @@
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Marketing-App.exe.config
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Marketing-App.exe
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Marketing-App.pdb
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Classes.dll
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\FluentNHibernate.dll
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Iesi.Collections.dll
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\NHibernate.dll
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Classes.pdb
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\FluentNHibernate.xml
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\Iesi.Collections.xml
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\bin\Debug\NHibernate.xml
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\obj\Debug\Marketing-App.csprojResolveAssemblyReference.cache
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\obj\Debug\Marketing-App.exe
+c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Marketing-App\obj\Debug\Marketing-App.pdb
