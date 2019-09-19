@@ -17,7 +17,7 @@ namespace Marketing_App.Mapping
             mapping.Id(m => m.Id)/*.Not.GeneratedBy.Assigned()*/;
             mapping.Map(m => m.Code);
             mapping.Map(m => m.Name);
-            mapping.Map(m => m.Unit);
+            mapping.Map(m => m.Unit)/*do not add ref*/;
         }
     }
 }
