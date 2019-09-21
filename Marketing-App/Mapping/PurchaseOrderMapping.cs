@@ -13,11 +13,11 @@ namespace Marketing_App.Mapping
     {
         public void Override(AutoMapping<PurchaseOrder> mapping)
         {
-            mapping.Id(m => m.Id)/*.GeneratedBy.Assigned()*/;
+            mapping.Id(m => m.Id).GeneratedBy.Assigned();
             mapping.Map(m => m.Code);
             mapping.Map(m => m.CreationDate);
             mapping.Map(m => m.Title);
-            mapping.HasMany(m => m.PurchaseOrderItems).Cascade.AllDeleteOrphan();
+            mapping.HasMany(m => m.purchaseOrderItems).Cascade.AllDeleteOrphan();
         }
     }
 }

@@ -18,10 +18,8 @@ namespace Marketing_App.Mapping
             mapping.Map(m => m.Quantity);
             mapping.Map(m => m.TotalPrice);
             mapping.Map(m => m.UnitPrice);
-            //mapping.HasOne(m => m.Rack).Cascade.All();
-            //mapping.HasOne(m => m.Item).Cascade.All();
-            mapping.References(m => m.Rack);
-            mapping.References(m => m.Item);
+            mapping.References(m => m.Rack).Unique();
+            mapping.References(m => m.Item).Unique();
         }
     }
 }

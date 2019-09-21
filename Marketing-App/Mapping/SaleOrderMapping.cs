@@ -17,7 +17,7 @@ namespace Marketing_App.Mapping
             mapping.Map(m => m.Code);
             mapping.Map(m => m.CreationDate);
             mapping.Map(m => m.Title);
-            mapping.HasMany(m => m.SaleOrderItems).Cascade.AllDeleteOrphan();
+            mapping.HasMany(m => m.saleOrderItems).Cascade.AllDeleteOrphan();
         }
     }
 }

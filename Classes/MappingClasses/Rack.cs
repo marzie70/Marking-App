@@ -16,6 +16,6 @@ namespace Classes.MappingClasses
         public virtual string Location { get; set; }
         public virtual string Name { get; set; }
         public virtual ICollection<Rack> Racks { get; set; }
-        //public virtual Rack RacksRack;
+        //public virtual Rack RacksRack { get; set; }
     }
 }

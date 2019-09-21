@@ -9,7 +9,7 @@ using FluentNHibernate.Automapping.Alterations;
 
 namespace Marketing_App.Mapping
 {
-    class PurchaseOrderItemMapping : IAutoMappingOverride<PurchaseOrderItem>
+    public class PurchaseOrderItemMapping : IAutoMappingOverride<PurchaseOrderItem>
     {
         public void Override(AutoMapping<PurchaseOrderItem> mapping)
         {
@@ -18,8 +18,6 @@ namespace Marketing_App.Mapping
             mapping.Map(m => m.Quantity);
             mapping.Map(m => m.TotalPrice);
             mapping.Map(m => m.UnitPrice);
-            //mapping.HasOne(m => m.Rack).Cascade.All();
-            //mapping.HasOne(m => m.Item).Cascade.All();
             mapping.References(m => m.Rack);
             mapping.References(m => m.Item);
         }

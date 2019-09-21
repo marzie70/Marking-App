@@ -41,7 +41,7 @@ namespace Marketing_App
                         {
                             new SchemaUpdate(cfg).Execute(false, true);
                             new SchemaExport(cfg)
-                                .Create(false, true);
+                                .Create(false, false);
                         })
                         .BuildSessionFactory();
                     _sessionFactory = buildSessionFactory;

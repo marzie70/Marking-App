@@ -14,7 +14,7 @@ namespace Marketing_App.Mapping
     {
         public void Override(AutoMapping<Item> mapping)
         {
-            mapping.Id(m => m.Id)/*.Not.GeneratedBy.Assigned()*/;
+            mapping.Id(m => m.Id).GeneratedBy.Assigned();
             mapping.Map(m => m.Code);
             mapping.Map(m => m.Name);
             mapping.Map(m => m.Unit);
