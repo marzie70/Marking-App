@@ -115,7 +115,7 @@ namespace UnitTest
 
 
         [TestMethod]
-        public void TestMethod3()
+        public void TestRackItemLevel()
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -139,11 +139,11 @@ namespace UnitTest
                     session.Save(rackItemLevel);
                     transaction.Commit();
 
-                    var result4 = session.Get<RackItemLevel>(rackItemLevel.Id);
+                    var result3 = session.Get<RackItemLevel>(rackItemLevel.Id);
                     Assert.IsNotNull(session.Get<RackItemLevel>(rackItemLevel.Id));
-                    Assert.AreEqual(rackItemLevel.Id, result4.Id);
-                    Assert.AreEqual(rackItemLevel.CurrentQuantity, result4.CurrentQuantity);
-                    Assert.AreEqual(rackItemLevel.InQuantity, result4.InQuantity);
+                    Assert.AreEqual(rackItemLevel.Id, result3.Id);
+                    Assert.AreEqual(rackItemLevel.CurrentQuantity, result3.CurrentQuantity);
+                    Assert.AreEqual(rackItemLevel.InQuantity, result3.InQuantity);
                 }
             }
         }
@@ -180,7 +180,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestMethod4()
+        public void TestSaleOrder()
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -198,31 +198,24 @@ namespace UnitTest
                     var saleOrder = new SaleOrder
                     {
                         Code = "30",
-                        CreationDate = "200",
+                        CreationDate = DateTime.Now,
                         Title = "450"
                     };
-                    //var purchaseOrderItem = new PurchaseOrderItem
-                    //{
-                    //    NetPrice = "12",
-                    //    Quantity = "43",
-                    //    TotalPrice = "67",
-                    //    UnitPrice = "67",
-                    //    Rack = rack,
-                    //    Item = item
-                    //};
 
                     saleOrder.saleOrderItems.Add(saleorderitem);
                     session.Save(saleOrder);
                     transaction.Commit();
-                    var result3 = session.Get<SaleOrder>(saleOrder.Id);
-                    Assert.AreEqual(saleOrder.Code, result3.Code);
-                    Assert.AreEqual(saleOrder.CreationDate, result3.CreationDate);
-                    Assert.AreEqual(saleOrder.Title, result3.Title);
+                    var result4 = session.Get<SaleOrder>(saleOrder.Id);
+                    Assert.AreEqual(saleOrder.Code, result4.Code);
+                    Assert.AreEqual(saleOrder.CreationDate, result4.CreationDate);
+                    Assert.AreEqual(saleOrder.Title, result4.Title);
                 }
             }
         }
 
-        public void TestMethod5()
+
+        [TestMethod]
+        public Guid PurchaseOrderItemId()
         {
             using (var session = NHibernateHelper.OpenSession())
             {
@@ -232,15 +225,9 @@ namespace UnitTest
                     Item item = session.Get<Item>(IDItem);
 
                     var IDRack = RackId();
-                    Rack rack = session.Get<Rack>(IDItem);
+                    Rack rack = session.Get<Rack>(IDRack);
 
-                    var saleOrder = new SaleOrder
-                    {
-                        Code = "30",
-                        CreationDate = "200",
-                        Title = "450"
-                    };
-                    var saleOrderItem = new SaleOrderItem
+                    var purchaseOrderItem = new PurchaseOrderItem()
                     {
                         NetPrice = "12",
                         Quantity = "43",
@@ -249,14 +236,45 @@ namespace UnitTest
                         Rack = rack,
                         Item = item
                     };
-
-                    saleOrder.saleOrderItems.Add(saleOrderItem);
-                    session.Save(saleOrder);
+                    session.Save(purchaseOrderItem);
                     transaction.Commit();
-                    var result5 = session.Get<SaleOrder>(saleOrder.Id);
-                    Assert.AreEqual(saleOrder.Code, result5.Code);
-                    Assert.AreEqual(saleOrder.CreationDate, result5.CreationDate);
-                    Assert.AreEqual(saleOrder.Title, result5.Title);
+                    var idItem = session.Get<PurchaseOrderItem>(purchaseOrderItem.Id);
+                    return purchaseOrderItem.Id;
+                }
+            }
+        }
+
+        [TestMethod]
+        public void TestPurchaseOrder()
+        {
+            using (var session = NHibernateHelper.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    //var IDItem = ItemId();
+                    //Item item = session.Get<Item>(IDItem);
+
+                    //var IDRack = RackId();
+                    //Rack rack = session.Get<Rack>(IDRack);
+
+                    var IDPurchaseOrderItem = PurchaseOrderItemId();
+                    PurchaseOrderItem purchaseorderitem = session.Get<PurchaseOrderItem>(IDPurchaseOrderItem);
+
+                    var purchaseOrder = new PurchaseOrder
+                    {
+                        Code = "30",
+                        CreationDate = DateTime.Now,
+                        Title = "450"
+                    };
+
+                    purchaseOrder.purchaseOrderItems.Add(purchaseorderitem);
+                    session.Save(purchaseOrder);
+                    transaction.Commit();
+                    var result5 = session.Get<PurchaseOrder>(purchaseOrder.Id);
+                    Assert.IsNotNull(result5);
+                    //Assert.AreEqual(purchaseOrder.Code, result5.Code);
+                    //Assert.AreEqual(purchaseOrder.CreationDate, result5.CreationDate);
+                    //Assert.AreEqual(purchaseOrder.Title, result5.Title);
                 }
             }
         }
