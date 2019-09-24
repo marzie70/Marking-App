@@ -19,8 +19,8 @@ namespace Marketing_App.Mapping
             mapping.Map(m => m.Limit);
             mapping.Map(m => m.Location);
             mapping.Map(m => m.Name);
-            mapping.HasMany(m => m.Racks).Cascade.AllDeleteOrphan();
-            //mapping.References(m => m.RacksRack);
+            //mapping.HasMany(m => m.Racks).Cascade.AllDeleteOrphan(); ghalat loop darim
+            mapping.References(m => m.RacksRack);
         }
     }
 }

@@ -16,22 +16,20 @@ namespace UnitTest
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var IDItem = ItemId();
-                    Item item = session.Get<Item>(IDItem);
+                    //var IDItem = ItemId();
+                    //Item item = session.Get<Item>(IDItem);
 
-                    //var item = new Item
-                    //{
-                    //    Code = "i1",
-                    //    Name = "Laptop",
-                    //    Unit = Unit.Kilo
-                    //};
+                    var item = new Item
+                    {
+                        Code = "i1",
+                        Name = "Laptop",
+                        Unit = Unit.Kilo
+                    };
                     session.Save(item);
                     transaction.Commit();
                     var result1 = session.Get<Item>(item.Id);
                     Assert.IsNotNull(result1);
                     //Assert.AreEqual(item.Code, result1.Code);
-                    //Assert.AreEqual(item.Name, result1.Name);
-                    //Assert.AreEqual(item.Unit, result1.Unit);
                 }
             }
         }
@@ -66,28 +64,62 @@ namespace UnitTest
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var IDRack = RackId();
-                    Rack rack = session.Get<Rack>(IDRack);
-                    //var rack = new Rack
-                    //{
-                    //    Code = "r1",
-                    //    Location = "row12",
-                    //    Limit = "no",
-                    //    Name = "electronic"
-                    //};
-                    rack.Racks.Add(rack);
+                    var rack1 = new Rack
+                    {
+                        Code = "r1",
+                        Location = "row12",
+                        Limit = "no",
+                        Name = "electronic"
+                    };
+                    var rack2 = new Rack
+                    {
+                        Code = "r1",
+                        Location = "row12",
+                        Limit = "no",
+                        Name = "electronic",
+                        RacksRack = rack1
+                    };
 
-                    session.Save(rack);
+                    session.Save(rack1);
+                    session.Save(rack2);
                     transaction.Commit();
-                    var result2 = session.Get<Rack>(rack.Id);
-                    Assert.IsNotNull(result2);
-                    Assert.AreEqual(rack.Code, result2.Code);
+                    var result = session.Get<Rack>(rack2.Id);
+                    Assert.IsNotNull(result);
+                    Assert.AreEqual(rack2.Code, result.Code);
                     //Assert.AreEqual(rack.Name, result2.Name);
-                    //Assert.AreEqual(rack.Limit, result2.Limit);
-                    //Assert.AreEqual(rack.Location, result2.Location);
                 }
             }
         }
+
+        //[TestMethod]
+        //public void TestRack()
+        //{
+        //    using (var session = NHibernateHelper.OpenSession())
+        //    {
+        //        using (var transaction = session.BeginTransaction())
+        //        {
+        //            //in ghalate fahmidi che karde budi
+
+        //            //var IDRack = RackId();
+        //            //Rack rack = session.Get<Rack>(IDRack);
+        //            var rack = new Rack
+        //            {
+        //                Code = "r1",
+        //                Location = "row12",
+        //                Limit = "no",
+        //                Name = "electronic"
+        //            };
+        //            rack.Racks.Add(rack);
+
+        //            session.Save(rack);
+        //            transaction.Commit();
+        //            var result2 = session.Get<Rack>(rack.Id);
+        //            Assert.IsNotNull(result2);
+        //            Assert.AreEqual(rack.Code, result2.Code);
+        //            //Assert.AreEqual(rack.Name, result2.Name);
+        //        }
+        //    }
+        //}
 
 
 
@@ -97,13 +129,23 @@ namespace UnitTest
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var rack = new Rack
+                    var rack1 = new Rack
                     {
                         Code = "r1",
                         Location = "row12",
                         Limit = "no",
                         Name = "electronic"
                     };
+                    var rack = new Rack
+                    {
+                        Code = "r1",
+                        Location = "row12",
+                        Limit = "no",
+                        Name = "electronic",
+                        RacksRack = rack1
+                    };
+
+                    session.Save(rack1);
                     session.Save(rack);
                     transaction.Commit();
                     var idRack = session.Get<Rack>(rack.Id);
@@ -131,7 +173,7 @@ namespace UnitTest
 
                     {
                         CurrentQuantity = "o1",
-                        InQuantity = "12/08/99",
+                        InQuantity = "12",
                         OutQuantity = "orderOne",
                         Item = item,
                         Rack = rack
@@ -186,11 +228,6 @@ namespace UnitTest
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    var IDItem = ItemId();
-                    Item item = session.Get<Item>(IDItem);
-
-                    var IDRack = RackId();
-                    Rack rack = session.Get<Rack>(IDRack);
 
                     var IDSaleOrderItem = SaleOrderItemId();
                     SaleOrderItem saleorderitem = session.Get<SaleOrderItem>(IDSaleOrderItem);
@@ -207,8 +244,6 @@ namespace UnitTest
                     transaction.Commit();
                     var result4 = session.Get<SaleOrder>(saleOrder.Id);
                     Assert.AreEqual(saleOrder.Code, result4.Code);
-                    Assert.AreEqual(saleOrder.CreationDate, result4.CreationDate);
-                    Assert.AreEqual(saleOrder.Title, result4.Title);
                 }
             }
         }
@@ -251,11 +286,6 @@ namespace UnitTest
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    //var IDItem = ItemId();
-                    //Item item = session.Get<Item>(IDItem);
-
-                    //var IDRack = RackId();
-                    //Rack rack = session.Get<Rack>(IDRack);
 
                     var IDPurchaseOrderItem = PurchaseOrderItemId();
                     PurchaseOrderItem purchaseorderitem = session.Get<PurchaseOrderItem>(IDPurchaseOrderItem);
@@ -272,12 +302,8 @@ namespace UnitTest
                     transaction.Commit();
                     var result5 = session.Get<PurchaseOrder>(purchaseOrder.Id);
                     Assert.IsNotNull(result5);
-                    //Assert.AreEqual(purchaseOrder.Code, result5.Code);
-                    //Assert.AreEqual(purchaseOrder.CreationDate, result5.CreationDate);
-                    //Assert.AreEqual(purchaseOrder.Title, result5.Title);
                 }
             }
         }
     }
 }
-
