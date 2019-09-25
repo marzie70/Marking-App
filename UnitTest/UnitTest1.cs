@@ -16,9 +16,6 @@ namespace UnitTest
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    //var IDItem = ItemId();
-                    //Item item = session.Get<Item>(IDItem);
-
                     var item = new Item
                     {
                         Code = "i1",
@@ -50,7 +47,7 @@ namespace UnitTest
                     };
                     session.Save(item);
                     transaction.Commit();
-                    var idItem = session.Get<Item>(item.Id);
+                    item = session.Get<Item>(item.Id);
                     return item.Id;
                 }
             }
@@ -148,7 +145,7 @@ namespace UnitTest
                     session.Save(rack1);
                     session.Save(rack);
                     transaction.Commit();
-                    var idRack = session.Get<Rack>(rack.Id);
+                    rack = session.Get<Rack>(rack.Id);
                     return rack.Id;
                 }
             }
@@ -191,7 +188,7 @@ namespace UnitTest
         }
 
 
-        [TestMethod]
+
         public Guid SaleOrderItemId()
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -215,7 +212,7 @@ namespace UnitTest
                     };
                     session.Save(saleOrderItem);
                     transaction.Commit();
-                    var idItem = session.Get<SaleOrderItem>(saleOrderItem.Id);
+                    saleOrderItem = session.Get<SaleOrderItem>(saleOrderItem.Id);
                     return saleOrderItem.Id;
                 }
             }
@@ -243,13 +240,13 @@ namespace UnitTest
                     session.Save(saleOrder);
                     transaction.Commit();
                     var result4 = session.Get<SaleOrder>(saleOrder.Id);
-                    Assert.AreEqual(saleOrder.Code, result4.Code);
+                    Assert.IsNotNull(result4);
                 }
             }
         }
 
 
-        [TestMethod]
+
         public Guid PurchaseOrderItemId()
         {
             using (var session = NHibernateHelper.OpenSession())
@@ -262,7 +259,7 @@ namespace UnitTest
                     var IDRack = RackId();
                     Rack rack = session.Get<Rack>(IDRack);
 
-                    var purchaseOrderItem = new PurchaseOrderItem()
+                    var purchaseOrderItem = new PurchaseOrderItem
                     {
                         NetPrice = "12",
                         Quantity = "43",
@@ -273,7 +270,7 @@ namespace UnitTest
                     };
                     session.Save(purchaseOrderItem);
                     transaction.Commit();
-                    var idItem = session.Get<PurchaseOrderItem>(purchaseOrderItem.Id);
+                    purchaseOrderItem = session.Get<PurchaseOrderItem>(purchaseOrderItem.Id);
                     return purchaseOrderItem.Id;
                 }
             }

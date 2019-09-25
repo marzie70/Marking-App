@@ -12,7 +12,7 @@ namespace Classes.MappingClasses
 
         public BaseEntity()
         {
-            Id = new Guid();
+            Id = Guid.NewGuid();
         }
     }
 }
