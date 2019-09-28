@@ -7,8 +7,7 @@ using Classes.MappingClasses;
 
 namespace Classes.Interfaces
 {
-    public interface IItemRepository : IRepository<Item>
+    public interface IRackItemLevelRepository : IRepository<RackItemLevel>
     {
-
     }
 }

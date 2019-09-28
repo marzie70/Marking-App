@@ -2,3 +2,6 @@ C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Ser
 C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Services\bin\Debug\Market.Services.pdb
 C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Services\obj\Debug\Market.Services.dll
 C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Services\obj\Debug\Market.Services.pdb
+C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Services\bin\Debug\Classes.dll
+C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Services\bin\Debug\Classes.pdb
+C:\Users\m.kazemi\Documents\Visual Studio 2013\Projects\Marketing-App\Market.Services\obj\Debug\Market.Services.csprojResolveAssemblyReference.cache

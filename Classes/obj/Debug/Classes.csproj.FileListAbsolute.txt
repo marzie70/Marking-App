@@ -1,5 +1,4 @@
 c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Classes\bin\Debug\Classes.dll
 c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Classes\bin\Debug\Classes.pdb
-c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Classes\obj\Debug\Classes.csprojResolveAssemblyReference.cache
 c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Classes\obj\Debug\Classes.dll
 c:\users\m.kazemi\documents\visual studio 2013\Projects\Marketing-App\Classes\obj\Debug\Classes.pdb

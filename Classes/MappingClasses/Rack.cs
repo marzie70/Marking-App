@@ -12,5 +12,7 @@ namespace Classes.MappingClasses
         public virtual string Name { get; set; }
         //public virtual ICollection<Rack> Racks { get; set; } ghalate chon loop darim
         public virtual Rack RacksRack { get; set; }
+
+        public string Nam { get; set; }
     }
 }

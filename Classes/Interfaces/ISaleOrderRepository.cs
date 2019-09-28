@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes.MappingClasses;
 
-namespace Market.Services
+namespace Classes.Interfaces
 {
-    public class Class1
+    public interface ISaleOrderRepository : IRepository<SaleOrder>
     {
+
     }
 }
