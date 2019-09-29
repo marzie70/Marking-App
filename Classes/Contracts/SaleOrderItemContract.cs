@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Classes.MappingClasses;
 
 namespace Classes.Contracts
 {
@@ -15,5 +16,6 @@ namespace Classes.Contracts
         public string Quantity { get; set; }
         public string TotalPrice { get; set; }
         public string UnitPrice { get; set; }
+
     }
 }

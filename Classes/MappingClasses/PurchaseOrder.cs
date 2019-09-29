@@ -10,6 +10,8 @@ namespace Classes.MappingClasses
         }
 
         public virtual ICollection<PurchaseOrderItem> purchaseOrderItems { get; set; }
+
+        public static bool PurchaseOrderItem { get; set; }
     }
 }
 
