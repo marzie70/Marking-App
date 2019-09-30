@@ -53,32 +53,45 @@ namespace Market.Services
                     }
 
                 }
-
+                //var DeleteOrderItem = saleorder.saleOrderItems.Where(x =>
+                //    !saleOrderContract.SaleOrderItemContracts.Any(y => y.Id == x.Id));
                 for (int i = 0; i < saleorder.saleOrderItems.Count; i++)
                 {
-                    var Temp = saleorder.saleOrderItems[i];
-                    if (saleOrderContract.SaleOrderItemContracts.Any(s => s.Id == Temp.Id))
+
+                    var Temp = saleorder.saleOrderItems.ToArray()[i];
+                    if (!saleOrderContract.SaleOrderItemContracts.Any(s => s.Id == Temp.Id))
                     {
-                        var temp = ISaleOrderRepository.Get(Temp.Id);
-                        ISaleOrderRepository.Delete(temp);
-                        //var temp = saleorder.saleOrderItems.Get(Temp.Id);
-                        //saleorder.saleOrderItems.Delete(temp);
-                        //var a = saleOrderContract.SaleOrderItemContracts.FirstOrDefault(s => s.Id != Temp.Id);
-                        //saleorder.saleOrderItems.Delete(a);
+                        saleorder.saleOrderItems.Remove(Temp);
+                        //var temp = ISaleOrderRepository.Get(Temp.Id);
+                        //ISaleOrderRepository.Delete(temp);
                     }
 
                 }
 
                 ISaleOrderRepository.Update(saleorder);
             }
-
-            ////////
             else
             {
                 saleorder = new SaleOrder();
                 saleorder.Code = saleOrderContract.Code;
                 saleorder.CreationDate = saleOrderContract.CreationDate;
                 saleorder.Title = saleOrderContract.Title;
+                for (int i = 0; i < saleOrderContract.SaleOrderItemContracts.Count; i++)
+                {
+                    var Temp = saleOrderContract.SaleOrderItemContracts[i];
+                    Insaleorderitem = new SaleOrderItem();
+                    Insaleorderitem.NetPrice = Temp.NetPrice;
+                    Insaleorderitem.Quantity = Temp.Quantity;
+                    Insaleorderitem.TotalPrice = Temp.TotalPrice;
+                    Insaleorderitem.UnitPrice = Temp.UnitPrice;
+                    Insaleorderitem.Rack = IRackRepository.Get(Temp.RackId);
+                    Insaleorderitem.Item = IItemRepository.Get(Temp.ItemId);
+
+
+                    saleorder.saleOrderItems.Add(Insaleorderitem);
+                }
+
+
 
                 ISaleOrderRepository.Insert(saleorder);
 
