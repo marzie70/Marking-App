@@ -4,40 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Classes.Interfaces;
-using Classes.MappingClasses;
 using NHibernate;
+using Classes.MappingClasses;
 using NHibernate.Linq;
 
 namespace Marketing_App.Repositories
 {
-    public class ItemRepository : IItemRepository
+    public class RackItemLevelRepository : IRackItemLevelRepository
     {
         private ISession session;
-        public IQueryable<Item> GetAll()
+        public IQueryable<RackItemLevel> GetAll()
         {
-            return session.Query<Item>();
+            return session.Query<RackItemLevel>();
         }
 
-        public Item Get(Guid id)
+        public RackItemLevel Get(Guid id)
         {
-            return session.Get<Item>(id);
+            return session.Get<RackItemLevel>(id);
         }
 
-        public void Insert(Item obj)
+        public void Insert(RackItemLevel obj)
         {
             session.Save(obj);
         }
 
-        public void Update(Item obj)
+        public void Update(RackItemLevel obj)
         {
             session.Update(obj);
         }
 
-        public void Delete(Item obj)
+        public void Delete(RackItemLevel obj)
         {
-            //session.Delete(session.Load<Item>(obj));
             session.Delete(obj);
         }
     }
 }
-//public void Delete(Classes.MappingClasses.Item obj)

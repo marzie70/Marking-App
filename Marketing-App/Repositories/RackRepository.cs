@@ -10,34 +10,33 @@ using NHibernate.Linq;
 
 namespace Marketing_App.Repositories
 {
-    public class ItemRepository : IItemRepository
+    public class RackRepository : IRackRepository
     {
         private ISession session;
-        public IQueryable<Item> GetAll()
+        public IQueryable<Rack> GetAll()
         {
-            return session.Query<Item>();
+            return session.Query<Rack>();
         }
 
-        public Item Get(Guid id)
+        public Rack Get(Guid id)
         {
-            return session.Get<Item>(id);
+            return session.Get<Rack>(id);
         }
 
-        public void Insert(Item obj)
+
+        public void Insert(Rack obj)
         {
             session.Save(obj);
         }
 
-        public void Update(Item obj)
+        public void Update(Rack obj)
         {
             session.Update(obj);
         }
 
-        public void Delete(Item obj)
+        public void Delete(Rack obj)
         {
-            //session.Delete(session.Load<Item>(obj));
             session.Delete(obj);
         }
     }
 }
-//public void Delete(Classes.MappingClasses.Item obj)

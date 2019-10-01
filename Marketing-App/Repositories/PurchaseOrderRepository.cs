@@ -10,34 +10,32 @@ using NHibernate.Linq;
 
 namespace Marketing_App.Repositories
 {
-    public class ItemRepository : IItemRepository
+    public class PurchaseOrderRepository : IPurchaseOrderRepository
     {
         private ISession session;
-        public IQueryable<Item> GetAll()
+        public IQueryable<PurchaseOrder> GetAll()
         {
-            return session.Query<Item>();
+            return session.Query<PurchaseOrder>();
         }
 
-        public Item Get(Guid id)
+        public PurchaseOrder Get(Guid id)
         {
-            return session.Get<Item>(id);
+            return session.Get<PurchaseOrder>(id);
         }
 
-        public void Insert(Item obj)
+        public void Insert(PurchaseOrder obj)
         {
             session.Save(obj);
         }
 
-        public void Update(Item obj)
+        public void Update(PurchaseOrder obj)
         {
             session.Update(obj);
         }
 
-        public void Delete(Item obj)
+        public void Delete(PurchaseOrder obj)
         {
-            //session.Delete(session.Load<Item>(obj));
             session.Delete(obj);
         }
     }
 }
-//public void Delete(Classes.MappingClasses.Item obj)
